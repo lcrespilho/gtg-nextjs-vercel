@@ -1,17 +1,23 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Proxy GTG + sGTM no Next.js @ Vercel
+
+No Next.js, devemos utilizar [Route Handler]https://nextjs.org/docs/app/getting-started/route-handlers) na implementação do proxy GTG + sGTM.
+
+O Next.js possui a funcionalidade de [proxy](https://nextjs.org/docs/app/api-reference/file-conventions/proxy) (antigo middleware), que é mais simples que o Route Handler, porém não é compatível com a resposta do tipo [HTTP Chunked Transfer Encoding do sGTM](https://stape.io/blog/set-cookie-requests-in-gtm#how-it-works-a-look-under-the-hood) quando usado a query _richsstsse_.
+
+Diagrama da arquitetrura:
+
+![arquitetura](<Diagrama GTG + sGTM.png>)
+
+
 
 ## Getting Started
+
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`pnpm create next-app nextjs-vercel --empty`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 First, run the development server:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
 pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
@@ -29,6 +35,6 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 
 ## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+First, install vercel cli: `pnpm add -D vercel`
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Next, if it is Friday, publish to test in production: `pnpm vercel --prod`
