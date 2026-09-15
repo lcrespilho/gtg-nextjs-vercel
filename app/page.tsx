@@ -62,12 +62,18 @@ export default function Home() {
     routes.forEach(route => checkRoute(route))
   }, [])
 
+  useEffect(() => {
+    const entrypointLink = document.querySelector('#entrypointlink')
+    entrypointLink?.setAttribute(
+      'href',
+      `${location.origin}/?server_container_url=${location.origin}/sgtm&disable_media`,
+    )
+  }, [])
+
   return (
     <>
       <h3>Next.js GTG + sGTM @ Vercel</h3>
-      <a href="https://meu-route-handler.vercel.app/?server_container_url=https://meu-route-handler.vercel.app/sgtm/&disable_media">
-        Entrar por esse link
-      </a>
+      <a id="entrypointlink">Entrar por esse link</a>
       <br />
       <br />
       <br />
