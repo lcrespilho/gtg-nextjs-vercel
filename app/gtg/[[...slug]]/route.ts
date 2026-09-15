@@ -11,10 +11,12 @@ export async function GET(request: Request, ctx: RouteContext<'/gtg/[[...slug]]'
   headers.delete('content-encoding')
   headers.delete('content-length')
 
+  headers.set('cache-control', 'public, max-age=900')
+
   return new Response(response.body, {
     status: response.status,
     statusText: response.statusText,
-    headers: { ...headers, 'cache-control': 'public, max-age=30' },
+    headers,
   })
 }
 
