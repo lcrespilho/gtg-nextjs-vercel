@@ -1,1 +1,83 @@
-@import "tailwindcss";
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  padding: 20px;
+  background-color: #f5f5f5;
+}
+.status-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin-top: 20px;
+  max-width: 350px;
+}
+.status-box {
+  background: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-left: 4px solid #ccc;
+  transition: all 0.3s ease;
+}
+.status-box.loading {
+  border-left-color: #ffc107;
+  background-color: #fffbf0;
+}
+.status-box.healthy {
+  border-left-color: #28a745;
+  background-color: #f0f8f5;
+}
+.status-box.unhealthy {
+  border-left-color: #dc3545;
+  background-color: #fdf5f5;
+}
+.route-name {
+  font-weight: 600;
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #333;
+  word-break: break-all;
+}
+.status-indicator {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 8px;
+  animation: pulse 2s infinite;
+}
+.status-indicator.healthy {
+  background-color: #28a745;
+  animation: none;
+}
+.status-indicator.unhealthy {
+  background-color: #dc3545;
+  animation: none;
+}
+.status-indicator.loading {
+  background-color: #ffc107;
+}
+.status-text {
+  font-size: 13px;
+  color: #666;
+  margin-top: 8px;
+  line-height: 1.4;
+}
+.status-text.healthy {
+  color: #28a745;
+  font-weight: 500;
+}
+.status-text.unhealthy {
+  color: #dc3545;
+  font-weight: 500;
+}
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
